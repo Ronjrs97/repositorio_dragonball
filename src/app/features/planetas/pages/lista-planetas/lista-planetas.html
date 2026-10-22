@@ -1,0 +1,22 @@
+<h1 class="mb-2 text-3xl font-bold">Planetas</h1>
+<p class="mb-6 text-stone-600">Explora los planetas del universo de Dragon Ball.</p>
+
+@if (cargando()) {
+  <p class="text-stone-500" role="status">Cargando planetas…</p>
+} @else if (fallo()) {
+  <p class="text-red-800" role="alert">No se pudieron cargar los planetas. Inténtalo de nuevo más tarde.</p>
+} @else {
+  <p class="mb-4 text-sm text-stone-500">
+    {{ total() }} planetas · página {{ pagina() }} de {{ totalPaginas() }}
+  </p>
+
+  <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Listado de planetas">
+    @for (planeta of planetas(); track planeta.id) {
+      <app-planeta-card [planeta]="planeta" />
+    } @empty {
+      <p class="text-stone-500">No hay planetas para mostrar.</p>
+    }
+  </section>
+
+  <app-paginador [pagina]="pagina()" [totalPaginas]="totalPaginas()" (cambio)="pagina.set($event)" />
+}

@@ -1,3 +1,4 @@
+Elioenai Villalobos
 # Directorio de Personajes — Angular 21
 
 Proyecto guía del módulo **Programación del lado del cliente** (URBE 2026).
